@@ -25,6 +25,10 @@ Route::get('contacto', function () {
     return view('contacto');
 });
 
+Route::get('aFewAcc', function () {
+    return view('AFewAccomplishment');
+});
+
 Route::get('about', function () {
     return view('about');
 });
