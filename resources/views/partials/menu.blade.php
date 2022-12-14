@@ -1,7 +1,7 @@
 <!-- Header -->
 <section id="header">
     <header>
-        <span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
+        <span class="image avatar"></span>
         <h1 id="logo"><a href="#">Willis Corto</a></h1>
         <p>I got reprogrammed by a rogue AI<br />
         and now I'm totally cray</p>
@@ -12,6 +12,7 @@
             <li><a href="/things">Things I Can Do</a></li>
             <li><a href="/aFewAcc">A Few Accomplishments</a></li>
             <li><a href="/contacto">Contact</a></li>
+            <li><a href="/login">Login</a></li>
         </ul>
     </nav>
     <footer>

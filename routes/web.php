@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClienteCatalogoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,16 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
-    return view('welcome');
-});
+// Route::get('/', function() {
+//     return view('encuentro');
+// });
 // ---------------------- @ My code:
+
 Route::get('/encuentro', function() {
     return view('encuentro');
 });
 Route::get('/contacto', function() {
     return view('contacto');
 });
+
+Route::get('/',[HomeController::class, 'getHome']);
+
 
 
 Route::get('aFewAcc', function () {
@@ -37,4 +43,23 @@ Route::get('about', function () {
 
 Route::get('/things', function() {
     return view('things');
+});
+
+Route::get('login', function(){
+    return view('auth.login');
+});
+
+
+
+
+
+
+
+Route::prefix('ClienteCatalogo')->group(function () {
+
+    Route::get('/',[ClienteCatalogController::class, 'getIndex']);
+    Route::get('/show/{id}', [ClienteCatalogoController::class, 'getShow']);
+    Route::get('/create', [ClienteCatalogoController::class, 'getCreate']);
+    Route::post('/create', [ClienteCatalogoController::class, 'store']);
+    Route::get('/edit/{id}', [ClienteCatalogoController::class, 'getEdit']);
 });
