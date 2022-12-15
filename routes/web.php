@@ -15,6 +15,7 @@ use App\Http\Controllers\ClienteCatalogoController;
 |
 */
 
+
 // Route::get('/', function() {
 //     return view('encuentro');
 // });
@@ -53,8 +54,6 @@ Route::get('login', function(){
 
 
 
-
-
 Route::prefix('ClienteCatalogo')->group(function () {
 
     Route::get('/',[ClienteCatalogController::class, 'getIndex']);
@@ -63,3 +62,13 @@ Route::prefix('ClienteCatalogo')->group(function () {
     Route::post('/create', [ClienteCatalogoController::class, 'store']);
     Route::get('/edit/{id}', [ClienteCatalogoController::class, 'getEdit']);
 });
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
