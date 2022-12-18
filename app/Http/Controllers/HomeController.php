@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function getHome(){
-         return view('encuentro');
+         return view('/encuentro');
     }
 
 
@@ -15,6 +15,6 @@ class HomeController extends Controller
 
     public function getCliente() {
 
-        return redirect()->action([ClienteCatalogController::class, 'getCreate']);
+        return redirect()->action([ClienteCatalogController::class, '/index']);
     }
 }

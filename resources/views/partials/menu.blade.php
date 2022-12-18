@@ -13,6 +13,12 @@
             <li><a href="/aFewAcc">A Few Accomplishments</a></li>
             <li><a href="/contacto">Contact</a></li>
             <li><a href="/login">Login</a></li>
+            <li><a href="/register">registarse</a></li>
+            <li><a href="/crearCliente"></a></li>
+            <li><a href="/crearSanitarios"></a></li>
+            <li><a href="/ClienteCatalogo/listadoCliente">listado de los Usuarios</a></li>
+            <li><a href="/ClienteCatalogo/showCliente/1">listado de un usuaraio con index uno</a></li>
+
         </ul>
     </nav>
     <footer>

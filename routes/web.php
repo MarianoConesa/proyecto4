@@ -46,26 +46,33 @@ Route::get('/things', function() {
     return view('things');
 });
 
-Route::get('login', function(){
-    return view('auth.login');
+Route::get('/logi', function(){
+    return view('auth.logi');
 });
 
 
-
+//Route::get('/listadoCliente',[ClienteCatalogoController::class, 'getIndex']);
 
 
 Route::prefix('ClienteCatalogo')->group(function () {
 
-    Route::get('/',[ClienteCatalogController::class, 'getIndex']);
-    Route::get('/show/{id}', [ClienteCatalogoController::class, 'getShow']);
+    //Route::get('/',[ClienteCatalogController::class, 'getIndex']);
+   // Route::get('/show/{id}', [ClienteCatalogoController::class, 'getShow']);
     Route::get('/create', [ClienteCatalogoController::class, 'getCreate']);
     Route::post('/create', [ClienteCatalogoController::class, 'store']);
-    Route::get('/edit/{id}', [ClienteCatalogoController::class, 'getEdit']);
+
+    Route::get('/editCliente/{id}', [ClienteCatalogoController::class, 'getEdit']);
+    Route::post('/editCliente/{id}', [ClienteCatalogoController::class, 'editStore']);
+
+    Route::get('/listadoCliente',[ClienteCatalogoController::class, 'getIndex']);
+    Route::get('/showCliente/{id}',[ClienteCatalogoController::class,'getShow']);
+
+
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('encuentro');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
