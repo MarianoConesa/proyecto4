@@ -25,6 +25,7 @@
 
 <form action="{{ url('/ClienteCatalogo/editCliente/'. $usuario->id )}}" method="POST">
     {{method_field('PUT')}}
+    @csrf
 
 
     <div class="form-group">

@@ -62,7 +62,7 @@ Route::prefix('ClienteCatalogo')->group(function () {
     Route::post('/create', [ClienteCatalogoController::class, 'store']);
 
     Route::get('/editCliente/{id}', [ClienteCatalogoController::class, 'getEdit']);
-    Route::post('/editCliente/{id}', [ClienteCatalogoController::class, 'editStore']);
+    Route::put('/editCliente/{id}', [ClienteCatalogoController::class, 'editStore']);
 
     Route::get('/listadoCliente',[ClienteCatalogoController::class, 'getIndex']);
     Route::get('/showCliente/{id}',[ClienteCatalogoController::class,'getShow']);

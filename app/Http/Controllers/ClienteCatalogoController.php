@@ -39,13 +39,15 @@ class ClienteCatalogoController extends Controller
     function editStore(Request $request,$id){
 
         $usuario = User::findOrFail($id);
-         $usuario=$request->input('name');
-        $usuario=$request->input('email');
+        $usuario->name=$request->input('name');
+        $usuario->email=$request->input('email');
 
         $usuario->save();
+
         $url = action([ClienteCatalogoController::class, 'getShow'],['id' =>$id]);
         return redirect($url);
     }
+
 
 
 
