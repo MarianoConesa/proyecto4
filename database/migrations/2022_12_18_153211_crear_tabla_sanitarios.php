@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CrearTablaSanitarios extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('sanitarian', function (Blueprint $table) {
+          // $table->id();
+            $table->string('email')->unique();
+          // $table->foreign('email')->references('email')->on('users');
+            $table->string('especialidad');
+            $table->string('localidad');
+            $table->integer('puntuacion');
+            $table->float('precio');
+
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('sanitarian');
+    }
+}

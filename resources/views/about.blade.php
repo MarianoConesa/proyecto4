@@ -1,6 +1,6 @@
 
 @extends("layouts.master")
-@section("contacto")
+@section("content")
     <header class="major">
         <h2>Read Only</h2>
         <p>Just an incredibly simple responsive site<br />
