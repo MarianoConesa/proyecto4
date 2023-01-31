@@ -10,16 +10,24 @@ use App\Http\Resources\CustomerResource;
 
 class CustomerController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return CustomerResource::collection(Customer::paginate());
-    }
+        $busqueda = $request->input('filter');
+        $numElementos = $request->input('numElements');
+        $registrosCustomers =
+            ($busqueda && array_key_exists('q', $busqueda))
+            ? Customer::where('first_name', 'like', '%' .$busqueda['q'] . '%')
+                ->paginate($numElementos)
+            : Customer::paginate($numElementos);
 
+            return CustomerResource::collection($registrosCustomers);
+    }
     /**
      * Store a newly created resource in storage.
      *
