@@ -43,7 +43,7 @@ class CustomerPolicy
      */
     public function view(User $user, Customer $customer)
     {
-        //
+        return true;
     }
 
     /**

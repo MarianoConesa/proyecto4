@@ -15,7 +15,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $numElementos = $request->input('numElements');
         $busquedaArray = [
@@ -26,16 +26,9 @@ class UserController extends Controller
 
         $registroUsuario = User::query();
 
-        foreach ($busquedaArray as $fieldName){
-
-            $registroUsuario = $registroUsuario
-            ->orWhere($fieldName, 'like', '%' .$busquedaFiltroQ['q'] . '%');
-        }
-
         if ($busquedaFiltroQ && array_key_exists('q', $busquedaFiltroQ)) {
 
            $registroUsuario = User::where('name', 'like', '%' .$busquedaFiltroQ['q'] . '%')
-            ->orWhere('email', 'like', '%' .$busquedaFiltroQ['q'] . '%')
             ->orWhere('email', 'like', '%' .$busquedaFiltroQ['q'] . '%');
 
         }else {
