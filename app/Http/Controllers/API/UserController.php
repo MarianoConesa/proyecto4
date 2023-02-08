@@ -15,9 +15,27 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return UserResource::collection(User::paginate());
+        $numElementos = $request->input('numElements');
+        $busquedaArray = [
+            'name',
+            'email',
+        ];
+        $busquedaFiltroQ = $request->input('filter');
+
+        $registroUsuario = User::query();
+
+        if ($busquedaFiltroQ && array_key_exists('q', $busquedaFiltroQ)) {
+
+           $registroUsuario = User::where('name', 'like', '%' .$busquedaFiltroQ['q'] . '%')
+            ->orWhere('email', 'like', '%' .$busquedaFiltroQ['q'] . '%');
+
+        }else {
+            $registroUsuario = User::query();
+        }
+
+        return UserResource::collection($registroUsuario->paginate($numElementos));
     }
 
     /**
