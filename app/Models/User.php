@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'localizacion',
     ];
 
     /**
@@ -42,6 +43,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Devolver el sanitario asociado.
+     */
+    public function sanitarian()
+    {
+        return $this->hasOne(Sanitarian::class, 'user_id');
+    }
 
     /**
      * Devolver el customer asociado.

@@ -6,6 +6,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Tqdev\PhpCrudApi\Api;
 use Tqdev\PhpCrudApi\Config\Config;
 use App\Http\Controllers\API\CustomerController;
+use App\Http\Controllers\API\SanitarianController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\ArtworkController;
@@ -33,6 +34,8 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     $user->fullName = $user->name;
     return $user;
 });
+
+Route::apiResource('sanitarians', SanitarianController::class)->middleware('auth:sanctum');
 
 Route::apiResource('customers', CustomerController::class)->middleware('auth:sanctum');
 

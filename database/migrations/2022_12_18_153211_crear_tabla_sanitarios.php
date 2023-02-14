@@ -13,15 +13,16 @@ class CrearTablaSanitarios extends Migration
      */
     public function up()
     {
-        Schema::create('sanitarian', function (Blueprint $table) {
-          // $table->id();
+        Schema::create('sanitarios', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 50);
             $table->string('email')->unique();
-          // $table->foreign('email')->references('email')->on('users');
-            $table->string('especialidad');
-            $table->string('localidad');
-            $table->integer('puntuacion');
-            $table->float('precio');
-
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('especialidad')->nullable();
+            $table->string('localizacion')->default('Cartagena');
+            $table->unsignedBigInteger('user_id');
+            $table->string('password');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
