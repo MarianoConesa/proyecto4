@@ -10,6 +10,7 @@ use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\ArtworkController;
 use App\Http\Controllers\API\TokenController;
+use App\Http\Controllers\API\AvatarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,10 @@ Route::apiResource('customers', CustomerController::class)->middleware('auth:san
 Route::apiResource('users', UserController::class);
 
 Route::apiResource('orders', OrderController::class)->middleware('auth:sanctum');
+
+Route::post('/avatars', [AvatarController::class, 'store'])->middleware('auth:sanctum');
+
+Route::get('/avatars/{id}', [AvatarController::class, 'getUserAvatar']);
 
 
 Route::get('artworks', [ArtworkController::class, 'index']);
